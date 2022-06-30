@@ -13,19 +13,19 @@
 <body>
     <h1>Das Wetter</h1>
     <span class="app-description">Gib den Namen einer Stadt ein, um ein <i>Widget</i> mit aktualisierbaren Wetterinformationen für diesen Standort zur Liste hinzuzufügen. Die Wetterdaten werden live über die öffentliche Schnittstelle der <a href="https://openweathermap.org">OpenWeatherMap</a> bezogen.</span>
-    <ul class="widgets">
+    <ul id="widget-list" class="widgets">
         <li class="widget add-item">
             <!-- Eingabefeld für die Namen neuer Städte, deren Wetter als Widget angezeigt werden soll -->
             <input type="text" id="input-text" placeholder="Neuer Ort">
         </li>
         <!-- Fügen Sie hier die neuen (oder wiederhergestellten) Widgets ein -->
     </ul>
-
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.js"></script>
     <script type="module" src="resources/js/index.js"></script>
 </body>
 
 <!-- Template für ein neues Wetter-Widget-->
-<template id="weather-widget-template">
+<template id="weather-widget-template" >
     <!-- Das Attribut data-city kann verwendet werden um die im Widget angezeigte Stadt bei Bedarf auslesen zu können -->
     <li class="widget" data-city="">
         <!-- Im IMG-Element soll immer das passende Wetter-Icon zur aktuellen Wetterlage angezeigt werden (siehe API-Beschreibung im Handout) -->
