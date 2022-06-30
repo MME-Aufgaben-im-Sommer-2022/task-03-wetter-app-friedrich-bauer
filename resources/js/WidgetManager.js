@@ -3,7 +3,7 @@ class WidgetManager {
 
     }
 
-    nonExistedCityAlert() {
+    errorAlert() {
         document.getElementsByClassName("widget add-item")[0].classList.add("show-error-animation");
             setTimeout(function() {
                 document.getElementsByClassName("widget add-item")[0].classList.remove("show-error-animation");

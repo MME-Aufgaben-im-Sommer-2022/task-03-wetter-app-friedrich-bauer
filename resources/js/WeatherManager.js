@@ -2,19 +2,20 @@ import {FETCH_CURRENT_WEATHER_URL} from "./api/OpenWeatherApiClient.js"
 import WidgetManager from "./WidgetManager.js";
 
 var template = document.querySelector("#weather-widget-template").content,
-    widgetManager = new WidgetManager();
+    widgetManager = new WidgetManager(),
+    created;
 
 class WeatherManager {
     constructor(city) {
         this.city = city;
     }
     
-    fecthWeather() {
+    fecthWeather(isReloaded) {
         fetch(FETCH_CURRENT_WEATHER_URL + this.city + ",DE")
             .then((response) => response.json())
-            .then((data) => this.displayWeather(data))
+            .then((data) => this.displayWeather(data, isReloaded))
             .catch((error) => {
-                widgetManager.nonExistedCityAlert();
+                widgetManager.errorAlert();
             });
     }
 
@@ -33,15 +34,22 @@ class WeatherManager {
         template.querySelector(".pressure").querySelector(".value").textContent = pressure + "hPa";
         template.querySelector(".wind").querySelector(".value").textContent = speed + "m/s";
 
-        document.querySelector(".widgets").appendChild(template.cloneNode(true));
-
         this.saveToStorage(name, name);
+
+        if (!created || isReloaded) {
+            document.querySelector(".widgets").appendChild(template.cloneNode(true));
+        } else {
+            widgetManager.errorAlert();
+        }
         
     }
 
     saveToStorage(key, value) {
         if (!localStorage[key]) {
             localStorage.setItem(key, value);
+            created = false;
+        } else {
+            created = true;
         }
     }
 
