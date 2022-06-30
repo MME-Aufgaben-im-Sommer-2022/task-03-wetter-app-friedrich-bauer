@@ -19,7 +19,7 @@ class WeatherManager {
             });
     }
 
-    displayWeather(data) {
+    displayWeather(data, isReloaded) {
         
         const { name } = data,
               { icon } = data.weather[0],
