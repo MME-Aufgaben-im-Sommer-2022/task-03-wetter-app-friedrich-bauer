@@ -16,7 +16,7 @@
     <ul class="widgets">
         <li class="widget add-item">
             <!-- Eingabefeld für die Namen neuer Städte, deren Wetter als Widget angezeigt werden soll -->
-            <input type="text" placeholder="Neuer Ort">
+            <input type="text" id="input-text" placeholder="Neuer Ort">
         </li>
         <!-- Fügen Sie hier die neuen (oder wiederhergestellten) Widgets ein -->
     </ul>
@@ -29,7 +29,7 @@
     <!-- Das Attribut data-city kann verwendet werden um die im Widget angezeigte Stadt bei Bedarf auslesen zu können -->
     <li class="widget" data-city="">
         <!-- Im IMG-Element soll immer das passende Wetter-Icon zur aktuellen Wetterlage angezeigt werden (siehe API-Beschreibung im Handout) -->
-        <span class="icon"><img src="http://openweathermap.org/img/wn/10d@2x.png"></span>
+        <span class="icon"><img id="img" src="http://openweathermap.org/img/wn/10d@2x.png"></span>
         <span class="data">
             <!-- Hier wird der Name der Stadt und die aktuelle Temperatur angezeigt -->
             <span class="main"></span>
