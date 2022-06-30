@@ -25,10 +25,10 @@ class WeatherManager {
               { temp, temp_min, temp_max , humidity, pressure} = data.main,
               { speed } = data.wind;
 
-        template.querySelector(".main").textContent = name + ", " + temp + "°C";
+        template.querySelector(".main").textContent = name + ", " + Math.round(parseFloat(temp)) + "°C";
         template.querySelector(".icon").querySelector("#img").src = "http://openweathermap.org/img/wn/" + icon + "@2x.png";
-        template.querySelector(".min-temperature").querySelector(".value").textContent = temp_min + "°C";
-        template.querySelector(".max-temperature").querySelector(".value").textContent = temp_max + "°C";
+        template.querySelector(".min-temperature").querySelector(".value").textContent = Math.round(parseFloat(temp_min)) + "°C";
+        template.querySelector(".max-temperature").querySelector(".value").textContent = Math.round(parseFloat(temp_max)) + "°C";
         template.querySelector(".humidity").querySelector(".value").textContent = humidity + "%";
         template.querySelector(".pressure").querySelector(".value").textContent = pressure + "hPa";
         template.querySelector(".wind").querySelector(".value").textContent = speed + "m/s";
