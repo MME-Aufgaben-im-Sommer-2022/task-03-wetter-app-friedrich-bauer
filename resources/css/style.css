@@ -102,6 +102,15 @@ h1 {
     list-style-type: none;
 }
 
+.widget-list {
+    display: flex;
+    flex-direction: column;
+    width: 80vw;
+    margin: 2vh auto;
+    padding: 0;
+    list-style-type: none;
+}
+
 .widget {
     display: flex;
     flex-direction: row;

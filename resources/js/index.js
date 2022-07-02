@@ -3,16 +3,11 @@ import WidgetManager from "./WidgetManager.js";
 
 
 function init() {
-    // localStorage.clear();
-    for (var i = 0; i < localStorage.length; i++) {
-        var key = localStorage.key(i),
-            savedWidgets = new WeatherManager(localStorage.getItem(key));
-        savedWidgets.fetchWeather(true);
-    }
+    widgetManager.reload();
 
 //creates new Array after drag and drop
     let widgetArray = [];
-    const widget = document.querySelector('#widget-list');
+    const widget = document.querySelector('.widget-list');
     Sortable.create(widget, {
         animation: 150,
         onUpdate: function (evt) {

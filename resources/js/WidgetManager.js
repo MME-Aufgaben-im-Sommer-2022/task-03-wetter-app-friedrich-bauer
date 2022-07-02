@@ -1,6 +1,16 @@
+import WeatherManager from "./WeatherManager.js";
+
 class WidgetManager {
     constructor() {
 
+    }
+
+    reload() {
+        for (var i = 0; i < localStorage.length; i++) {
+            var key = localStorage.key(i),
+                savedWidgets = new WeatherManager(localStorage.getItem(key));
+            savedWidgets.fetchWeather(true);
+        }
     }
 
     errorAlert() {
@@ -11,11 +21,21 @@ class WidgetManager {
     }
 
     update() {
-
+        document.querySelector('.widget-list').addEventListener("click", function(event) {
+            if (event.target.matches(".update")) {
+                location.reload();
+            }
+        });
     }
 
-    delete() {
-
+    delete(key) {
+        document.querySelector('.widget-list').addEventListener("click", function(event) {
+            if (event.target.matches(".delete")) {
+                localStorage.removeItem(key);
+                console.log(localStorage);
+                location.reload();
+            }
+        });
     }
 }
 

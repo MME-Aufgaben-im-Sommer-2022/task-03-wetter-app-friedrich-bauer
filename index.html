@@ -13,12 +13,13 @@
 <body>
     <h1>Das Wetter</h1>
     <span class="app-description">Gib den Namen einer Stadt ein, um ein <i>Widget</i> mit aktualisierbaren Wetterinformationen für diesen Standort zur Liste hinzuzufügen. Die Wetterdaten werden live über die öffentliche Schnittstelle der <a href="https://openweathermap.org">OpenWeatherMap</a> bezogen.</span>
-    <ul id="widget-list" class="widgets">
+    <ul class="widgets">
         <li class="widget add-item">
             <!-- Eingabefeld für die Namen neuer Städte, deren Wetter als Widget angezeigt werden soll -->
             <input type="text" id="input-text" placeholder="Neuer Ort">
         </li>
         <!-- Fügen Sie hier die neuen (oder wiederhergestellten) Widgets ein -->
+        <ul class="widget-list"></ul>
     </ul>
     <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.js"></script>
     <script type="module" src="resources/js/index.js"></script>

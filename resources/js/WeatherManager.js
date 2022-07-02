@@ -37,7 +37,8 @@ class WeatherManager {
 
         this.saveToStorage(name, name);
         if (!created || isReloaded) {
-            document.querySelector(".widgets").appendChild(template.cloneNode(true));
+            document.querySelector(".widget-list").appendChild(template.cloneNode(true));
+            this.addFeatures(name);
         } else {
             widgetManager.errorAlert();
         }
@@ -51,6 +52,11 @@ class WeatherManager {
         } else {
             created = true;
         }
+    }
+
+    addFeatures(name) {
+        widgetManager.update();
+        widgetManager.delete(name);
     }
 }
 
