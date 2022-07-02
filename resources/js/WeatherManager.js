@@ -10,6 +10,7 @@ class WeatherManager {
         this.city = city;
     }
     
+    //gets weather information
     fetchWeather(isReloaded) {
         fetch(FETCH_CURRENT_WEATHER_URL + this.city + ",DE")
             .then((response) => response.json())
@@ -19,8 +20,8 @@ class WeatherManager {
             });
     }
 
+    //shows icon information and prevents duplicates of cities 
     displayWeather(data, isReloaded) {
-        
         const { name } = data,
               { icon } = data.weather[0],
               { temp, temp_min, temp_max , humidity, pressure} = data.main,
@@ -35,7 +36,6 @@ class WeatherManager {
         template.querySelector(".wind").querySelector(".value").textContent = speed + "m/s";
 
         this.saveToStorage(name, name);
-
         if (!created || isReloaded) {
             document.querySelector(".widgets").appendChild(template.cloneNode(true));
         } else {
@@ -43,6 +43,7 @@ class WeatherManager {
         }
     }
 
+    //saves persistent
     saveToStorage(key, value) {
         if (!localStorage[key]) {
             localStorage.setItem(key, value);

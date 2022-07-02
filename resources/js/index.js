@@ -3,8 +3,6 @@ import WidgetManager from "./WidgetManager.js";
 
 
 function init() {
-    console.log("### Starting Weather-App ###"); // eslint-disable-line no-console
-    // TODO Wetter-App implementieren
     // localStorage.clear();
     for (var i = 0; i < localStorage.length; i++) {
         var key = localStorage.key(i),
@@ -18,14 +16,15 @@ function init() {
     Sortable.create(widget, {
         animation: 150,
         onUpdate: function (evt) {
-        widgetArray = []; //neues Array wird gecleard
-        evt.to.childNodes.forEach(widget => { //für jedes Kindobjekt wird als widget übernommen
-            widgetArray.push(widget.innerText); //Inhalt wird in Array gepushed
+        widgetArray = [];
+        evt.to.childNodes.forEach(widget => {
+            widgetArray.push(widget.innerText);
         });
         },
     });
 }
 
+//implemented weatherManager to create widgets via key event 
 var weatherManager,
     widgetManager = new WidgetManager();
 document.querySelector(".widgets").addEventListener("keyup", function(event) {
@@ -38,7 +37,6 @@ document.querySelector(".widgets").addEventListener("keyup", function(event) {
             weatherManager = new WeatherManager(document.getElementById("input-text").value);
             weatherManager.fetchWeather(false);
             document.getElementById("input-text").value = "";
-            console.log(localStorage);
         } 
     }
 })
