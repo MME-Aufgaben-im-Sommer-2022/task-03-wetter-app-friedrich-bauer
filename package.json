@@ -9,5 +9,8 @@
     "start": "node index.js"
   },
   "author": "",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "sortablejs": "^1.15.0"
+  }
 }

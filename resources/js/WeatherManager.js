@@ -10,7 +10,7 @@ class WeatherManager {
         this.city = city;
     }
     
-    fecthWeather(isReloaded) {
+    fetchWeather(isReloaded) {
         fetch(FETCH_CURRENT_WEATHER_URL + this.city + ",DE")
             .then((response) => response.json())
             .then((data) => this.displayWeather(data, isReloaded))
@@ -41,7 +41,6 @@ class WeatherManager {
         } else {
             widgetManager.errorAlert();
         }
-        
     }
 
     saveToStorage(key, value) {
@@ -52,8 +51,7 @@ class WeatherManager {
             created = true;
         }
     }
-
-
 }
+
 
 export default WeatherManager;

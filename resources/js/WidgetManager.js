@@ -19,4 +19,6 @@ class WidgetManager {
     }
 }
 
+
+
 export default WidgetManager;
