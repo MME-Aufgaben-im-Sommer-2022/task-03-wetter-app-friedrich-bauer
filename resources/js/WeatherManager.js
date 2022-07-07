@@ -16,7 +16,7 @@ class WeatherManager {
             .then((response) => response.json())
             .then((data) => this.displayWeather(data, isReloaded))
             .catch((error) => {
-                widgetManager.errorAlert();
+                widgetManager.errorAnimation();
             });
     }
 
@@ -40,7 +40,7 @@ class WeatherManager {
             document.querySelector(".widget-list").appendChild(template.cloneNode(true));
             this.addFeatures(name);
         } else {
-            widgetManager.errorAlert();
+            widgetManager.errorAnimation();
         }
     }
 
