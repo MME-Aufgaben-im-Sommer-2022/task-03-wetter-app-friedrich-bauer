@@ -23,17 +23,20 @@ class WidgetManager {
     update() {
         document.querySelector('.widget-list').addEventListener("click", function(event) {
             if (event.target.matches(".update")) {
-                location.reload();
+                event.target.parentNode.parentNode.remove();
+                localStorage.removeItem(event.target.parentNode.parentNode.getAttribute("data-city"));
+
+                var updatedWidget = new WeatherManager(event.target.parentNode.parentNode.getAttribute("data-city"));
+                updatedWidget.fetchWeather(false);
             }
         });
     }
 
-    delete(key) {
+    delete() {
         document.querySelector('.widget-list').addEventListener("click", function(event) {
             if (event.target.matches(".delete")) {
-                localStorage.removeItem(key);
-                console.log(localStorage);
-                location.reload();
+                localStorage.removeItem(event.target.parentNode.parentNode.getAttribute("data-city"));
+                event.target.parentNode.parentNode.remove();
             }
         });
     }
