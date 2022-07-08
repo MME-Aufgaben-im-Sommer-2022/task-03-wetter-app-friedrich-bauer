@@ -16,7 +16,7 @@ class WeatherManager {
             .then((response) => response.json())
             .then((data) => this.displayWeather(data, isReloaded))
             .catch((error) => {
-                widgetManager.errorAlert();
+                widgetManager.errorAnimation();
             });
     }
 
@@ -34,13 +34,12 @@ class WeatherManager {
         template.querySelector(".humidity").querySelector(".value").textContent = humidity + "%";
         template.querySelector(".pressure").querySelector(".value").textContent = pressure + "hPa";
         template.querySelector(".wind").querySelector(".value").textContent = speed + "m/s";
+        template.querySelector(".widget").setAttribute("data-city", name);
 
         this.saveToStorage(name, name);
         if (!created || isReloaded) {
             document.querySelector(".widget-list").appendChild(template.cloneNode(true));
-            this.addFeatures(name);
-        } else {
-            widgetManager.errorAlert();
+            this.addFeatures();
         }
     }
 
@@ -54,9 +53,9 @@ class WeatherManager {
         }
     }
 
-    addFeatures(name) {
+    addFeatures() {
         widgetManager.update();
-        widgetManager.delete(name);
+        widgetManager.delete();
     }
 }
 

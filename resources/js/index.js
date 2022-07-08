@@ -23,10 +23,10 @@ function init() {
 var weatherManager,
     widgetManager = new WidgetManager();
 document.querySelector(".widgets").addEventListener("keyup", function(event) {
-    if (event.key == "Enter") {
+    if (event.key === "Enter") {
         
         if (document.getElementById("input-text").value === "") {
-            widgetManager.errorAlert(); 
+            widgetManager.errorAnimation(); 
             
         } else {
             weatherManager = new WeatherManager(document.getElementById("input-text").value);
