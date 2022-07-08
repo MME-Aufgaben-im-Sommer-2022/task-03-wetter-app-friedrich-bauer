@@ -10,7 +10,7 @@ class WeatherManager {
         this.city = city;
     }
     
-    //gets weather information
+    // gets weather information
     fetchWeather(isReloaded) {
         fetch(FETCH_CURRENT_WEATHER_URL + this.city + ",DE")
             .then((response) => response.json())
@@ -20,7 +20,7 @@ class WeatherManager {
             });
     }
 
-    //shows icon information and prevents duplicates of cities 
+    // shows weather information and prevents duplicates of cities 
     displayWeather(data, isReloaded) {
         const { name } = data,
               { icon } = data.weather[0],
@@ -37,13 +37,15 @@ class WeatherManager {
         template.querySelector(".widget").setAttribute("data-city", name);
 
         this.saveToStorage(name, name);
+
+        // create widgets
         if (!created || isReloaded) {
-            document.querySelector(".widget-list").appendChild(template.cloneNode(true));
+            document.querySelector(".widget-list").prepend(template.cloneNode(true));
             this.addFeatures();
         }
     }
 
-    //saves persistent
+    // saves persistent (check if a key exists or not in localStorage)
     saveToStorage(key, value) {
         if (!localStorage[key]) {
             localStorage.setItem(key, value);
@@ -53,6 +55,7 @@ class WeatherManager {
         }
     }
 
+    // makes update- and delete button of each widget work
     addFeatures() {
         widgetManager.update();
         widgetManager.delete();

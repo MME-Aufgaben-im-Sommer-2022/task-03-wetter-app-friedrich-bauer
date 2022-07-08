@@ -5,7 +5,7 @@ import WidgetManager from "./WidgetManager.js";
 function init() {
     widgetManager.reload();
 
-//creates new Array after drag and drop
+// creates new Array after drag and drop
     let widgetArray = [];
     const widget = document.querySelector('.widget-list');
     Sortable.create(widget, {
@@ -19,7 +19,7 @@ function init() {
     });
 }
 
-//implemented weatherManager to create widgets via key event 
+// creates widgets from search query 
 var weatherManager,
     widgetManager = new WidgetManager();
 document.querySelector(".widgets").addEventListener("keyup", function(event) {

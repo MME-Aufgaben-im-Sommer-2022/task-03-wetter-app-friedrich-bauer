@@ -5,6 +5,7 @@ class WidgetManager {
 
     }
 
+    // loads all the data that have been saved in localStorage
     reload() {
         for (var i = 0; i < localStorage.length; i++) {
             var key = localStorage.key(i),
